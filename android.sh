@@ -5,4 +5,4 @@ cd calabash
 rm app.apk
 cp ../app/build/outputs/apk/app-dev-debug-unaligned.apk app.apk
 calabash-android resign app.apk
-calabash-android run app.apk  --format json --out report.json --format pretty
+calabash-android run app.apk --tags @dev  --format json --out report.json --format pretty
