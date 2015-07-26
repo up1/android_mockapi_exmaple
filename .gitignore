@@ -7,3 +7,6 @@
 /captures
 /app/build
 /.idea
+/calabash/*.apk
+/calabash/*.json
+/calabash/test_servers

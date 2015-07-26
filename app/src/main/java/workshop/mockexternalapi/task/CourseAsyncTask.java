@@ -1,7 +1,6 @@
 package workshop.mockexternalapi.task;
 
 
-import android.app.DownloadManager;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
@@ -12,7 +11,6 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import workshop.mockexternalapi.data.Course;
 import workshop.mockexternalapi.listener.LoadCourseCompletedListener;
@@ -30,8 +28,6 @@ public class CourseAsyncTask extends AsyncTask<String, Void, List<Course>> {
     }
 
     protected List<Course> doInBackground(String... urls)   {
-        String result = "";
-
         List<Course> courses = new ArrayList<>();
 
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -46,6 +42,7 @@ public class CourseAsyncTask extends AsyncTask<String, Void, List<Course>> {
                 ListCourse courseList = gson.fromJson(response.body().charStream(), ListCourse.class);
                 for(CourseDetail courseDetail : courseList.results){
                     courses.add(new Course(courseDetail.title, "detail"));
+                    courses.add(new Course(courseDetail.price, "price"));
                 }
             }
         } catch (IOException e) {
