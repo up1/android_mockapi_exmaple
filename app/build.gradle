@@ -22,10 +22,31 @@ android {
     }
 
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+        }
+
+    }
+
+    productFlavors {
+        def COURSE_URL = "COURSE_URL"
+
+        dev {
+            applicationId "workshop.mockexternalapi.dev"
+            buildConfigField "String", COURSE_URL, '"http://10.0.3.2:8888/api-2.0/courses"'
+        }
+
+        qa {
+            applicationId "workshop.mockexternalapi.dev"
+            buildConfigField "String", COURSE_URL, '"https://www.udemy.com/api-2.0/courses"'
+        }
+
+        prod {
+            applicationId "workshop.mockexternalapi"
+            buildConfigField "String", COURSE_URL, '"https://www.udemy.com/api-2.0/courses"'
         }
     }
 }

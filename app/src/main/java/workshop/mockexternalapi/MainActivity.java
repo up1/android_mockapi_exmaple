@@ -1,11 +1,9 @@
 package workshop.mockexternalapi;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements LoadCourseComplet
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
 
-
-        new CourseAsyncTask(this).execute();
+        String courseUrl = BuildConfig.COURSE_URL;
+        new CourseAsyncTask(this).execute(courseUrl);
     }
 
     public List<Course> getCourses() {

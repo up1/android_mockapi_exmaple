@@ -33,7 +33,8 @@ public class CourseAsyncTask extends AsyncTask<String, Void, List<Course>> {
         OkHttpClient okHttpClient = new OkHttpClient();
 
         Request.Builder builder = new Request.Builder();
-        Request request = builder.url("https://www.udemy.com/api-2.0/courses").build();
+        System.out.println("URL = " + urls[0]);
+        Request request = builder.url(urls[0]).build();
 
         try {
             Response response = okHttpClient.newCall(request).execute();
@@ -42,7 +43,6 @@ public class CourseAsyncTask extends AsyncTask<String, Void, List<Course>> {
                 ListCourse courseList = gson.fromJson(response.body().charStream(), ListCourse.class);
                 for(CourseDetail courseDetail : courseList.results){
                     courses.add(new Course(courseDetail.title, "detail"));
-                    courses.add(new Course(courseDetail.price, "price"));
                 }
             }
         } catch (IOException e) {

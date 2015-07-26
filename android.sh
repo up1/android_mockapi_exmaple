@@ -1,6 +1,8 @@
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/
 export ANDROID_HOME=/Users/somkiat/data/software/android-sdk-macosx
-./gradlew assembleDebug
+./gradlew clean assembleDevDebug
 cd calabash
-cp ../app/build/outputs/apk/app-debug-unaligned.apk .
-calabash-android resign app-debug-unaligned.apk
-calabash-android run app-debug-unaligned.apk  --format json --out report.json --format pretty
+rm app.apk
+cp ../app/build/outputs/apk/app-dev-debug-unaligned.apk app.apk
+calabash-android resign app.apk
+calabash-android run app.apk  --format json --out report.json --format pretty

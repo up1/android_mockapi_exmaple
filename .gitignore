@@ -9,4 +9,5 @@
 /.idea
 /calabash/*.apk
 /calabash/*.json
+/calabash/*.png
 /calabash/test_servers
